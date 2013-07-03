@@ -7,8 +7,6 @@
 module ConstantContact
   module Components
     class ActivityError < Component
-      attr_accessor :message, :line_number, :email_address
-
       # Factory method to create an ActivityError object from an array
       # @param [Hash] props - hash of properties to create object from
       # @return [ActivityError]
@@ -16,7 +14,7 @@ module ConstantContact
         activity_error = ActivityError.new
         if props
           props.each do |key, value|
-            activity_error.send("#{key}=", value)
+            activity_error.public_send("#{key}=", value)
           end
         end
         activity_error

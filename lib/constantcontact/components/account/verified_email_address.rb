@@ -7,8 +7,6 @@
 module ConstantContact
   module Components
     class VerifiedEmailAddress < Component
-      attr_accessor :status, :email_address
-
       # Factory method to create a VerifiedEmailAddress object from a json string
       # @param [Hash] props - array of properties to create object from
       # @return [VerifiedEmailAddress]
@@ -16,7 +14,7 @@ module ConstantContact
         email_address = VerifiedEmailAddress.new
         if props
           props.each do |key, value|
-            email_address.send("#{key}=", value)
+            email_address.public_send("#{key}=", value)
           end
         end
         email_address

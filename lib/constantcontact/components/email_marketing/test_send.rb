@@ -7,9 +7,6 @@
 module ConstantContact
   module Components
     class TestSend < Component
-      attr_accessor :format, :personal_message, :email_addresses
-
-
       # Factory method to create a TestSend object from an array
       # @param [Hash] props - hash of properties to create object from
       # @return [TestSend]
@@ -25,7 +22,7 @@ module ConstantContact
                 end
               end
             else
-              test_send.send("#{key}=", value)
+              test_send.public_send("#{key}=", value)
             end
           end
         end
@@ -36,8 +33,8 @@ module ConstantContact
       # Add an email address to the set of addresses to send the test send too
       # @param [String] email_address
       def add_email(email_address)
-        @email_addresses = [] if @email_addresses.nil?
-        @email_addresses << email_address
+        self.email_addresses = [] unless email_addresses?
+        self.email_addresses << email_address
       end
 
     end

@@ -7,8 +7,6 @@
 module ConstantContact
   module Components
     class Note < Component
-      attr_accessor :id, :note, :created_date
-
       # Factory method to create a Note object from a json string
       # @param props - JSON string representing a contact
       # @return Note
@@ -16,7 +14,7 @@ module ConstantContact
         note = Note.new
         if props
           props.each do |key, value|
-            note.send("#{key}=", value)
+            note.public_send("#{key}=", value)
           end
         end
         note

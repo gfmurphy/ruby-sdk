@@ -7,10 +7,6 @@
 module ConstantContact
   module Components
     class AddContactsImportData < Component
-      attr_accessor :first_name, :middle_name, :last_name, :job_title, :company_name,
-                    :work_phone, :home_phone, :email_addresses, :addresses, :custom_fields
-
-
       # Constructor to create an AddContactsImportData object from the given hash
       # @param [Hash] props - the hash with properties
       # @return [AddContactsImportData]
@@ -22,22 +18,22 @@ module ConstantContact
 
       # Setter
       def add_custom_field(custom_field)
-        @custom_fields = [] if @custom_fields.nil?
-        @custom_fields << custom_field
+        self.custom_fields = [] unless custom_fields?
+        self.custom_fields << custom_field
       end
 
 
       # Setter
       def add_address(address)
-        @addresses = [] if @addresses.nil?
-        @addresses << address
+        self.addresses = [] unless self.addresses?
+        self.addresses << address
       end
 
 
       # Setter
       def add_email(email_address)
-        @email_addresses = [] if @email_addresses.nil?
-        @email_addresses << email_address
+        self.email_addresses = [] unless email_addresses?
+        self.email_addresses << email_address
       end
 
     end

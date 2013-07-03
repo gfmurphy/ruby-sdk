@@ -7,8 +7,6 @@
 module ConstantContact
   module Components
     class AddContacts < Component
-      attr_accessor :import_data, :lists, :column_names
-
       # Constructor to create an AddContacts object from the given contacts and contact lists
       # @param [Array<Contact>] contacts - contacts array
       # @param [Array<ContactList>] lists - contact lists array]
@@ -17,14 +15,14 @@ module ConstantContact
       def initialize(contacts, lists, column_names = [])
         if !contacts.empty?
           if contacts[0].instance_of?(Components::AddContactsImportData)
-            @import_data = contacts
+            self.import_data = contacts
           else
             raise Exceptions::IllegalArgumentException, sprintf(Util::Config.get('errors.id_or_object'), 'AddContactsImportData')
           end
         end
 
-        @lists = lists
-        @column_names = column_names
+        self.lists = lists
+        self.column_names = column_names
 
         # attempt to determine the column names being used if they are not provided
         if column_names.empty?
@@ -108,7 +106,7 @@ module ConstantContact
             end
           end
 
-          @column_names = used_columns
+          self.column_names = used_columns
         end
       end
 

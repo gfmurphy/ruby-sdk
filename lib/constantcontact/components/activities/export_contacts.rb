@@ -7,22 +7,18 @@
 module ConstantContact
   module Components
     class ExportContacts < Component
-      attr_accessor :file_type, :sort_by, :export_date_added,
-                    :export_added_by, :lists, :column_names
-
-
       # Constructor to create an ExportContacts object
       # @param [Array] lists - array of lists ids
       # @return [ExportContacts]
       def initialize(lists = nil)
         if !lists.nil?
-          @lists = lists
+          self.lists = lists
         end
-        @file_type = 'CSV'
-        @sort_by = 'EMAIL_ADDRESS'
-        @export_date_added = true
-        @export_added_by = true
-        @column_names = ['Email Address', 'First Name', 'Last Name']
+        self.file_type = 'CSV'
+        self.sort_by = 'EMAIL_ADDRESS'
+        self.export_date_added = true
+        self.export_added_by = true
+        self.column_names = ['Email Address', 'First Name', 'Last Name']
       end
 
     end

@@ -7,9 +7,6 @@
 module ConstantContact
   module Components
     class Activity < Component
-      attr_accessor :id, :type, :status, :start_date, :finish_date, :file_name, :created_date,
-                    :error_count, :errors, :warnings, :contact_count
-
       # Factory method to create an Activity object from a json string
       # @param [Hash] props - hash of properties to create object from
       # @return [Activity]
@@ -32,7 +29,7 @@ module ConstantContact
                 end
               end
             else
-              activity.send("#{key}=", value)
+              activity.public_send("#{key}=", value)
             end
           end
         end

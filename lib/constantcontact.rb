@@ -7,6 +7,7 @@
 require 'rubygems'
 require 'rest_client'
 require 'json'
+require 'hashie'
 require 'cgi'
 require 'cgi/session'
 require 'cgi/session/pstore'
